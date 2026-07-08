@@ -21,13 +21,13 @@ export default function About() {
           something thoughtful for the people using it.
         </p>
         <div className="flex flex-col gap-3 text-[13px]">
-          <a href="mailto:" className="w-fit border-b border-black pb-[1px] no-underline text-black hover:text-[#888] hover:border-[#888] transition-colors duration-150">
+          <a href="mailto:pkim2320@gmail.com" className="w-fit border-b border-black pb-[1px] no-underline text-black hover:text-[#888] hover:border-[#888] transition-colors duration-150">
             Email
           </a>
-          <a href="" target="_blank" rel="noreferrer" className="w-fit border-b border-black pb-[1px] no-underline text-black hover:text-[#888] hover:border-[#888] transition-colors duration-150">
+          <a href="https://github.com/ruuuh20" target="_blank" rel="noreferrer" className="w-fit border-b border-black pb-[1px] no-underline text-black hover:text-[#888] hover:border-[#888] transition-colors duration-150">
             GitHub
           </a>
-          <a href="" target="_blank" rel="noreferrer" className="w-fit border-b border-black pb-[1px] no-underline text-black hover:text-[#888] hover:border-[#888] transition-colors duration-150">
+          <a href="https://www.linkedin.com/in/pia-kim/" target="_blank" rel="noreferrer" className="w-fit border-b border-black pb-[1px] no-underline text-black hover:text-[#888] hover:border-[#888] transition-colors duration-150">
             LinkedIn
           </a>
         </div>
