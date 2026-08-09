@@ -10,7 +10,7 @@ const projects = [
     period: "2025 – Present",
     type: "Freelance",
     stack: "Next.js, Airtable",
-    description: "The NY Hangeul Museum Initiative is a community-driven campaign to establish the first Korean language and culture museum in New York — and the site is its primary public face.\n\nBuilt a Next.js landing page integrated with Airtable to capture and manage supporter registrations, helping the campaign reach 579 supporters. Currently redesigning the site for the 2026 campaign with updated branding and exhibition-style content pages.",
+    description: "Campaign site built to support the effort to establish New York's first Korean alphabet museum. I designed and built it in Next.js, with Airtable handling supporter signups so the organizers could manage the list without touching code. I also built an anonymous public message board — visitors could leave short notes of encouragement in Korean or English, which gave the campaign a visible sense of momentum. The site collected all 579 signups that brought the campaign to its goal.",
     url: "https://nyhangeul.org",
   },
   {
@@ -19,7 +19,7 @@ const projects = [
     period: "2023 – Present",
     type: "Freelance",
     stack: "Next.js, Sanity CMS",
-    description: "EduTogether bridges educational communities across cultures through school partnerships, student and educator exchanges, and cultural programs — connecting schools and institutions worldwide with Korea.\n\nDeveloping a bilingual English-Korean site in Next.js and Sanity CMS to communicate the organization's programs and drive inquiries from prospective partners. Features include student sign-ups for exchange trips and brochure downloads. Also support the organization beyond development — coordinating programs and handling Korean-English translation.",
+    description: "EduTogether connects U.S. and global schools through cultural exchange and language programs, currently working with 15+ partner institutions. I've been with the organization since 2018 — first as a program coordinator on exchange trips to Korea — and grew into the web developer role as my technical skills developed. I led a full redesign in Next.js and Sanity CMS, choosing Sanity so non-technical staff could update content without developer help. The site displays both English and Korean together rather than separate localized versions, which matched how the organization actually communicates.",
     url: "https://edutogether.us",
   },
   {
