@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 
 const projects = [
   {
@@ -52,38 +51,59 @@ const projects = [
 
 export default function Home() {
   const [selected, setSelected] = useState(projects[0]);
+  const [showAbout, setShowAbout] = useState(false);
   const [showDetail, setShowDetail] = useState(false);
 
   function selectProject(p) {
     setSelected(p);
+    setShowAbout(false);
+    setShowDetail(true);
+  }
+
+  function selectAbout() {
+    setShowAbout(true);
     setShowDetail(true);
   }
 
   return (
-    <div className="flex flex-col h-dvh bg-white text-black text-[13px]">
+    <div className="flex flex-col h-dvh bg-white text-black text-[13px] animate-fadein">
 
       <header className="flex justify-between items-center px-5 py-3 border-b border-black shrink-0">
-        <span>Pia Kim</span>
-        <Link href="/about" className="no-underline hover:underline text-black">About</Link>
+        <span style={{ fontFamily: "var(--font-geist-mono)" }}>Pia Kim</span>
       </header>
 
       <div className="flex-1 min-h-0 overflow-hidden md:grid md:grid-cols-[260px_1fr]">
 
-        <nav className={`border-r border-black overflow-y-auto ${showDetail ? "hidden md:block" : "block"}`}>
-          {projects.map((p) => (
+        <nav className={`border-r border-black overflow-y-auto flex flex-col ${showDetail ? "hidden md:flex" : "flex"}`}>
+          <div className="flex-1">
+            {projects.map((p) => (
+              <button
+                key={p.id}
+                onClick={() => selectProject(p)}
+                className={[
+                  "w-full text-left px-5 py-[0.65rem] border-b border-[#e8e8e8] text-[13px] cursor-pointer transition-colors duration-100 block font-(family-name:--font-geist) overflow-hidden text-ellipsis whitespace-nowrap",
+                  !showAbout && selected.id === p.id
+                    ? "bg-black text-white"
+                    : "bg-transparent text-black hover:bg-[#f5f5f5]",
+                ].join(" ")}
+              >
+                {p.title}
+              </button>
+            ))}
+          </div>
+          <div className="border-t border-black">
             <button
-              key={p.id}
-              onClick={() => selectProject(p)}
+              onClick={selectAbout}
               className={[
-                "w-full text-left px-5 py-[0.65rem] border-b border-[#e8e8e8] text-[13px] cursor-pointer transition-colors duration-100 block font-(family-name:--font-geist) overflow-hidden text-ellipsis whitespace-nowrap",
-                selected.id === p.id
+                "w-full text-left px-5 py-[0.65rem] text-[13px] cursor-pointer transition-colors duration-100 block font-(family-name:--font-geist)",
+                showAbout
                   ? "bg-black text-white"
                   : "bg-transparent text-black hover:bg-[#f5f5f5]",
               ].join(" ")}
             >
-              {p.title}
+              About
             </button>
-          ))}
+          </div>
         </nav>
 
         <main className={`overflow-y-auto px-5 py-6 md:px-10 md:py-8 ${showDetail ? "block" : "hidden md:block"}`}>
@@ -93,25 +113,48 @@ export default function Home() {
           >
             ← Back
           </button>
-          <div className="text-[11px] uppercase tracking-[0.08em] text-[#888] mb-2">
-            {selected.period}
-          </div>
-          <h1 className="text-[1.6rem] font-normal tracking-[-0.02em] mb-1">{selected.title}</h1>
-          <p className="text-[11px] text-[#888] mb-6 tracking-[0.03em]">{selected.stack}</p>
-          <div className="mb-6 max-w-130">
-            {selected.description.split("\n\n").map((para, i) => (
-              <p key={i} className="leading-[1.75] mb-4 last:mb-0">{para}</p>
-            ))}
-          </div>
-          {selected.url && (
-            <a
-              href={selected.url}
-              target="_blank"
-              rel="noreferrer"
-              className="text-[11px] uppercase tracking-[0.08em] no-underline text-black border-b border-black pb-[1px] hover:text-[#888] hover:border-[#888] transition-colors duration-150"
-            >
-              View Site →
-            </a>
+
+          {showAbout ? (
+            <div className="max-w-130">
+              <h1 className="text-[2.8rem] font-normal tracking-[-0.03em] leading-[1.1] mb-8">Info</h1>
+              <p className="leading-[1.75] mb-8">
+                I&apos;m a front-end developer. Much of my work has been with nonprofits and community organizations — my background is in education, where I started as a program coordinator and teacher before moving into building the sites and tools that help organizations reach the people they serve. I care about building things that are thoughtful, accessible, and genuinely useful.
+              </p>
+              <div className="flex flex-col gap-3">
+                <a href="mailto:pkim2320@gmail.com" className="w-fit border-b border-black pb-px no-underline text-black hover:text-[#888] hover:border-[#888] transition-colors duration-150">
+                  Email
+                </a>
+                <a href="https://github.com/ruuuh20" target="_blank" rel="noreferrer" className="w-fit border-b border-black pb-px no-underline text-black hover:text-[#888] hover:border-[#888] transition-colors duration-150">
+                  GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/pia-kim/" target="_blank" rel="noreferrer" className="w-fit border-b border-black pb-px no-underline text-black hover:text-[#888] hover:border-[#888] transition-colors duration-150">
+                  LinkedIn
+                </a>
+              </div>
+            </div>
+          ) : (
+            <>
+              <div className="text-[11px] uppercase tracking-[0.08em] text-[#888] mb-2">
+                {selected.period}
+              </div>
+              <h1 className="text-[2.8rem] font-normal tracking-[-0.03em] leading-[1.1] mb-2">{selected.title}</h1>
+              <p className="text-[11px] text-[#888] mb-6 tracking-[0.03em]">{selected.stack}</p>
+              <div className="mb-6 max-w-130">
+                {selected.description.split("\n\n").map((para, i) => (
+                  <p key={i} className="leading-[1.75] mb-4 last:mb-0">{para}</p>
+                ))}
+              </div>
+              {selected.url && (
+                <a
+                  href={selected.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-[11px] uppercase tracking-[0.08em] no-underline text-black border-b border-black pb-px hover:text-[#888] hover:border-[#888] transition-colors duration-150"
+                >
+                  View Site →
+                </a>
+              )}
+            </>
           )}
         </main>
 
