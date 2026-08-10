@@ -28,7 +28,7 @@ const projects = [
     period: "2016 – 2023",
     type: "Web Developer",
     stack: "Next.js",
-    description: "Peak Education Center is a learning center offering tutoring, test prep, small group classes, and educational consulting for students in grades 5–9.\n\nDeveloped and maintained the site in Next.js over several years as the center evolved — including a class registration system and schedule management that streamlined communication between parents, students, and teachers. Also worked as an instructor during this time, teaching literature-based reading and essay writing.",
+    description: "Peak Education Center is a K-12 academic planning and tutoring center. I built and maintained their site in Next.js, including a registration flow and a schedule management system for parent-student-teacher communication. I later led a full site restructure — redesigning the site and rewriting its positioning to reflect the center's broader focus on academic planning, consulting, and college prep alongside tutoring.",
     url: "https://peakeducenter.com",
   },
   {
@@ -37,8 +37,7 @@ const projects = [
     period: "2024 – 2025",
     type: "Freelance",
     stack: "Framer",
-    description: "The Korean Language Foundation is a nonprofit dedicated to promoting Korean language and culture, with a long organizational history and a calendar of annual events anchored by their flagship gala.\n\nRebuilt an outdated website in Framer, bringing the organization's online presence back after years of inactivity. The site covers the organization's history, board members, programs, and events — with a focus on gala promotion and fundraising outreach. Updated seasonally around key annual events rather than on a continuous basis.",
-    url: "https://klfusa.org",
+    description: "Korean Language Foundation advocates for Korean language education in U.S. schools. I redesigned their site in Framer — choosing the platform so non-technical staff could manage updates without a developer. The centerpiece was a custom animated U.S. map I built with custom code, visualizing school by school where Korean language programs currently exist. The goal was to make the org's advocacy mission tangible for visitors at a glance, rather than just stating it in text.",
   },
   {
     id: 5,
@@ -46,7 +45,7 @@ const projects = [
     period: "Personal Project",
     type: "Side Project",
     stack: "Next.js, TypeScript, Tailwind CSS",
-    description: "Matchday is a Premier League lineup visualizer built out of a genuine love for football. The idea was simple: most football apps show you confirmed lineups after the fact — Matchday lets you build your own.\n\nSelect any of the 20 Premier League clubs, choose a formation, and arrange real squad players across an interactive SVG pitch. Swap players into any position, toggle between a clean dot view and a kit view that renders each club's jersey in their actual colors, then share your custom lineup via a unique URL — no account or backend required.",
+    description: "Most football apps show you confirmed lineups after the fact — Matchday lets you build your own. Select any of the 20 Premier League clubs, choose a formation, and arrange real squad players across an interactive SVG pitch. Swap players into any position, toggle between a clean dot view and a kit view that renders each club's jersey in their actual colors, then share your custom lineup via a unique URL — no account or backend required. Squad data sourced from football-data.org.",
     url: "https://matchday-steel.vercel.app/",
   },
 ];
@@ -104,14 +103,16 @@ export default function Home() {
               <p key={i} className="leading-[1.75] mb-4 last:mb-0">{para}</p>
             ))}
           </div>
-          <a
-            href={selected.url}
-            target="_blank"
-            rel="noreferrer"
-            className="text-[11px] uppercase tracking-[0.08em] no-underline text-black border-b border-black pb-[1px] hover:text-[#888] hover:border-[#888] transition-colors duration-150"
-          >
-            View Site →
-          </a>
+          {selected.url && (
+            <a
+              href={selected.url}
+              target="_blank"
+              rel="noreferrer"
+              className="text-[11px] uppercase tracking-[0.08em] no-underline text-black border-b border-black pb-[1px] hover:text-[#888] hover:border-[#888] transition-colors duration-150"
+            >
+              View Site →
+            </a>
+          )}
         </main>
 
       </div>
