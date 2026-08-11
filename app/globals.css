@@ -2,6 +2,7 @@
 
 body {
   font-family: var(--font-geist), sans-serif;
+  background: #111;
 }
 
 body::after {
@@ -15,6 +16,37 @@ body::after {
   background-repeat: repeat;
 }
 
+@keyframes starspin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-starspin {
+  animation: starspin 5s linear infinite;
+  display: inline-block;
+}
+
+@keyframes gradientwash {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.gradient-wash {
+  background: linear-gradient(-45deg, #1a3a6e, #2d1b69, #0d3a4a, #3d0d5a, #0d2a4a);
+  background-size: 400% 400%;
+  animation: gradientwash 14s ease infinite;
+}
+
+@keyframes slidefill {
+  from { transform: translateX(-101%); }
+  to { transform: translateX(0); }
+}
+
+.animate-slidefill {
+  animation: slidefill 0.22s ease-out forwards;
+}
+
 @keyframes fadein {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -23,3 +55,4 @@ body::after {
 .animate-fadein {
   animation: fadein 0.3s ease-in forwards;
 }
+
