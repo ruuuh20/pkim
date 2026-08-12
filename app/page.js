@@ -118,7 +118,7 @@ export default function Home() {
           <div className="border-t border-[#333]">
             <button
               onClick={selectAbout}
-              className="w-full text-left px-5 py-[0.65rem] text-[13px] block font-(family-name:--font-geist) text-white hover:text-[#888] transition-colors duration-100"
+              className="w-full text-left px-5 py-[0.65rem] text-[13px] block font-(family-name:--font-geist) text-[#666] hover:text-[#999] transition-colors duration-100"
               style={{
                 backgroundImage: "linear-gradient(to right, white, white)",
                 backgroundSize: showAbout ? "100% 100%" : "0% 100%",
