@@ -77,15 +77,17 @@ export default function Home() {
 
       <header className="flex justify-between items-center px-5 py-3 border-b border-[#333] shrink-0">
         <div className="flex items-baseline gap-3">
-          <span style={{ fontFamily: "var(--font-geist-mono)" }}>Pia Kim</span>
+          <span>Pia Kim</span>
           <span className="text-[11px] text-[#555] tracking-[0.05em]">Web Developer</span>
         </div>
         <button
           onClick={() => setFunMode(!funMode)}
-          className="text-[#444] hover:text-[#888] transition-colors duration-150 cursor-pointer"
-          title="✦"
+          className="group relative text-[#666] hover:text-[#aaa] transition-colors duration-150"
         >
-          <span className="animate-starspin text-[18px]">✦</span>
+          <span className="animate-starspin text-[22px]">✦</span>
+          <span className="absolute right-0 top-full mt-1 text-[11px] text-[#999] opacity-0 group-hover:opacity-100 transition-opacity duration-150 whitespace-nowrap pointer-events-none">
+            surprise
+          </span>
         </button>
       </header>
 
@@ -99,7 +101,7 @@ export default function Home() {
                 <button
                   key={p.id}
                   onClick={() => selectProject(p)}
-                  className="w-full text-left px-5 py-[0.65rem] border-b border-[#1f1f1f] text-[13px] cursor-pointer block font-(family-name:--font-geist) truncate text-white hover:text-[#888] transition-colors duration-100"
+                  className="w-full text-left px-5 py-[0.65rem] border-b border-[#1f1f1f] text-[13px] block font-(family-name:--font-geist) truncate text-white hover:text-[#888] transition-colors duration-100"
                   style={{
                     backgroundImage: "linear-gradient(to right, white, white)",
                     backgroundSize: isSelected ? "100% 100%" : "0% 100%",
@@ -116,7 +118,7 @@ export default function Home() {
           <div className="border-t border-[#333]">
             <button
               onClick={selectAbout}
-              className="w-full text-left px-5 py-[0.65rem] text-[13px] cursor-pointer block font-(family-name:--font-geist) text-white hover:text-[#888] transition-colors duration-100"
+              className="w-full text-left px-5 py-[0.65rem] text-[13px] block font-(family-name:--font-geist) text-white hover:text-[#888] transition-colors duration-100"
               style={{
                 backgroundImage: "linear-gradient(to right, white, white)",
                 backgroundSize: showAbout ? "100% 100%" : "0% 100%",
@@ -133,16 +135,16 @@ export default function Home() {
         <main className={`overflow-y-auto px-5 py-6 md:px-10 md:py-8 ${showDetail ? "block" : "hidden md:block"}`}>
           <button
             onClick={() => setShowDetail(false)}
-            className="md:hidden text-[11px] uppercase tracking-[0.08em] text-[#555] mb-6 cursor-pointer"
+            className="md:hidden text-[12px] uppercase tracking-[0.08em] text-[#999] mb-6"
           >
             ← Back
           </button>
 
           {showAbout ? (
             <div className="max-w-130">
-              <h1 className="text-[2.8rem] font-normal tracking-[-0.03em] leading-[1.1] mb-8">Info</h1>
+              <h1 className="text-[2.2rem] font-normal tracking-[-0.02em] leading-[1.15] mb-8">Info</h1>
               <p className="leading-[1.75] mb-8">
-                I&apos;m a front-end developer. Much of my work has been with nonprofits and community organizations — my background is in education, where I started as a program coordinator and teacher before moving into building the sites and tools that help organizations reach the people they serve. I care about building things that are thoughtful, accessible, and genuinely useful.
+                I&apos;m a front-end developer whose work has mostly been with mission-driven organizations. My background is in education, where I worked as a program coordinator and teacher before moving into building the sites and tools that help organizations reach the people they serve. I care about building things that are thoughtful, accessible, and genuinely useful.
               </p>
               <div className="flex flex-col gap-3">
                 <a href="mailto:pkim2320@gmail.com" className="w-fit border-b border-white pb-px no-underline text-white hover:text-[#666] hover:border-[#666] transition-colors duration-150">
@@ -161,8 +163,14 @@ export default function Home() {
               <div className="text-[11px] uppercase tracking-[0.08em] text-[#555] mb-2">
                 {selected.period}
               </div>
-              <h1 className="text-[2.8rem] font-normal tracking-[-0.03em] leading-[1.1] mb-2">{selected.title}</h1>
-              <p className="text-[11px] text-[#555] mb-6 tracking-[0.03em]">{selected.stack}</p>
+              <h1 className="text-[2.2rem] font-normal tracking-[-0.02em] leading-[1.15] mb-2">{selected.title}</h1>
+              <div className="flex flex-wrap gap-2 mb-6">
+                {selected.stack.split(", ").map((tech, i) => (
+                  <span key={i} className="text-[10px] uppercase tracking-[0.06em] border border-[#333] text-[#666] px-2 py-px">
+                    {tech}
+                  </span>
+                ))}
+              </div>
               <div className="mb-6 max-w-130">
                 {selected.description.split("\n\n").map((para, i) => (
                   <p key={i} className="leading-[1.75] mb-4 last:mb-0">{para}</p>
@@ -173,9 +181,9 @@ export default function Home() {
                   href={selected.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-[11px] uppercase tracking-[0.08em] no-underline text-white border-b border-white pb-px hover:text-[#666] hover:border-[#666] transition-colors duration-150"
+                  className="group inline-flex items-center gap-1 text-[11px] uppercase tracking-[0.08em] no-underline text-white border-b border-white pb-px hover:text-[#666] hover:border-[#666] transition-colors duration-150"
                 >
-                  View Site →
+                  View Site <span className="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
                 </a>
               )}
             </>

@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+*, *::before, *::after, a, button, [role="button"] {
+  cursor: crosshair !important;
+}
+
 body {
   font-family: var(--font-geist), sans-serif;
   background: #111;
@@ -33,9 +37,9 @@ body::after {
 }
 
 .gradient-wash {
-  background: linear-gradient(-45deg, #1a3a6e, #2d1b69, #0d3a4a, #3d0d5a, #0d2a4a);
+  background: linear-gradient(-45deg, #1a3a6e, #2d1b69, #0d3a4a, #3d0d5a, #0d2a4a, #1f3a70, #1a0f50, #0a3040);
   background-size: 400% 400%;
-  animation: gradientwash 14s ease infinite;
+  animation: gradientwash 14s linear infinite;
 }
 
 @keyframes slidefill {
